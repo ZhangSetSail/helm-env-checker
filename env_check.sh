@@ -12,7 +12,7 @@ WARN=${YELLOW}WARN${NC}
 function check_gateway() {
     `ping registry.cn-hangzhou.aliyuncs.com -c4 &>/dev/null`
     a=$?
-    `curl docker.io &> /dev/null`
+    `curl --connect-timeout 1 docker.io &> /dev/null`
     b=$?
     if [ $? -ne  0 ] && [ $b -ne 0 ]
     then
